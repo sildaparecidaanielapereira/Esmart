@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/home-site.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBus</title>
+</head>
+<body>
+   <!-- NAVBAR FEITO -->
+
+   <nav class=" custom-shadow navbar navbar-dark bg-black navbar-expand-lg">
+    <a class="navbar-brand px-lg-5  " href="Home-site.html"><img class="logo" src="img/logo-smartbuss.png"
+        alt="logo-do-site-Smart-Bus"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-right">
+        <li class="nav-item active py-2-5   m-2 ">
+          <a class="nav-link text-warning custom-font-weight font-do-site-primaria " href="Home-site.html">Home</a>
+        </li>
+        <li class="nav-item py-2-5   m-2 ">
+          <a class="nav-link text-warning custom-font-weight font-do-site-primaria"
+            href="horarios-ajuda.html">Horarios</a>
+        </li>
+        <li class="nav-item py-2-5   m-2 ">
+          <a class="nav-link text-warning custom-font-weight font-do-site-primaria"
+            href="recarga-cartão.html">Recarga</a>
+        </li>
+        <li class="nav-item py-2-5   m-2  ">
+          <a class="nav-link text-warning custom-font-weight font-do-site-primaria" href="horarios-ajuda.html">Ajuda</a>
+        </li>
+        <li>
+          <button type="button"  href="template/pages/samples/login.html" src="template/pages/samples/login.html"
+            class=" btn btn-warning  btn-primary custom-shadow btn-md rounded-3 border-0 text-black font-weight-bold  py-2-5   m-3  text-center">Entrar</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- abaixo muda o tAMANHO DO ICONE DA LOGO  -->
+  <style>
+    .logo {
+      width: 155px;
+      /* Defina a largura desejada em pixels */
+      height: auto;
+      /* Mantém a proporção da altura para evitar distorções */
+    }
+  </style>
+  <!-- SCRIPT DO BANNER -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+  <!-- FINAL DO NAVBAR -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block; /* Remove espaço extra sob a imagem */
+        }
+
+
+        .tamnaho-persoalizado-img{
+            width:400px ;
+            height:200px ;
+        }
+    </style>
+
+
+<section class=" container-fluid   d-flex justify-content-center align-items-center">
+<div class="col-12  col-md-12 col-lg-12">
+    <div class="w-100 bg-light custom-shadow  ">
+
+        <div class="bg-black">
+            <h1 class="pb-5 text-light text-center  pt-4 pb-5 text-light text-center mb-5">CRIAÇÃO DE CARTÃO
+            </h1>
+
+        </div>
+
+      
+        <div class="  rounded-bottom-4">
+            <div class="container">
+                <h4>Formulario para criação de cadastro</h4>
+                <form action="pastadestino.php" method="POST" class="mx-auto my-4">
+                    <!-- O restante do seu formulário aqui -->
+        
+         <form  claaction="pastadestino.php" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputName">Nome Completo</label>
+                    <input type="text" id="inputName" class="form-control" placeholder="" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Senha </label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder=""required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4"> Repita a Senha</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="" required>
+                </div>
+            </div>
+            <h5 class="mt-4">Adicione seu enderço</h5>
+<!-- cidade codigo cep -->
+    <form>
+        <input type="text" name="cep" id="cep" placeholder="CEP">
+
+        <input type="text" name="cidade" id="cidade" placeholder="Cidade">
+        
+
+        <input type="submit" value="Buscar">
+    </form>
+
+    <div id="resultados"></div>
+
+    <script>
+        const formulario = document.querySelector("form");
+        const resultados = document.querySelector("#resultados");
+
+        formulario.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const cep = formulario.cep.value;
+
+            try {
+                const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`);
+                // console.log(response);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // console.log(data);
+
+                    resultados.innerHTML = `
+                    <ul>
+                        <li>CEP: ${data.cep}</li>
+                        <li>Cidade: ${data.city}</li>
+                        <li>Bairro: ${data.neighborhood}</li>
+                        <li>Estado: ${data.state}</li>
+                        <li>Rua: ${data.street}</li>
+                    </ul>`;
+
+                    formulario.cidade.value = data.city;
+                
+                } else {
+                    resultados.innerHTML = `<p>O CEP ${cep} é inválido.</p>`;
+                }
+            } catch (error) {
+                console.error(error);
+                resultados.innerHTML = "<p>Erro ao buscar CEP.</p>";
+            }
+        });
+    </script>
+            
+                
+                <div class="form-group col-md-4">
+                    <label for="inputState">Estado</label>
+                    <select id="inputState" class="form-control" required>
+                        <option selected hidden>Escolha...</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+            </div>
+            <div class="botao text-center">
+                <button type="submit" class="btn   mt-4 mb-5 btn btn-warning btn-md rounded-5 border-0  custom-shadow  text-black font-weight-bold m-2 text-center">CRIAR CARTÃO</button>
+              </div>
+          </div>
+           
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
+                </form>
+            </div>
+        
+           
+    </div></div>
+
+
+</section>
+   
+
+
+
+<style>
+/* ABAIXO TEMOS AA COR PRETA DE BOTOES */
+    .btn-black-night {
+      background-color: black;
+    }
+/* ABAIXO TEMOS A SOMBRA CUSTOMIZADA PADARAO DO SITE */
+    .custom-shadow {
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
